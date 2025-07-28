@@ -72,7 +72,7 @@ body, html {
 
 .hero-title {
   font-family: 'Syne', sans-serif;
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 800;
   line-height: 0.9;
   margin-bottom: 2rem;
@@ -1126,7 +1126,7 @@ body, html {
 /* Section Titles */
 .scene h2 {
   font-family: 'Syne', sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 800;
   text-align: center;
   margin-bottom: 2rem;
@@ -1141,7 +1141,7 @@ body, html {
 /* Override for About section calligraphy heading */
 .scene .about-text h2 {
   font-family: 'Great Vibes', cursive !important;
-  font-size: 2.8rem !important;
+  font-size: 1.5rem !important;
   font-weight: 400 !important;
   letter-spacing: 0.05em !important;
   line-height: 1.2 !important;
@@ -1194,20 +1194,20 @@ body, html {
   }
   
   .hero-title {
-    font-size: 4rem;
+    font-size: 2.5rem;
   }
   .scene h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   
   .about-grid {
@@ -1230,7 +1230,7 @@ body, html {
   }
   
   .scene h2 {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
   }
   
   .contact-links {
