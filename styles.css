@@ -50,6 +50,15 @@ body {
   padding: 0;
 }
 
+/* Reset heading elements to prevent browser defaults */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 html, body {
   width: 100%;
   height: 100%;
@@ -1068,11 +1077,12 @@ body, html {
   margin-bottom: 3rem;
 }
 
-.contact-quote h3 {
+/* Contact Quote - Higher specificity to override any conflicting styles */
+.scene .scene-content .contact-quote h3 {
   font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 1.6rem !important;
-  color: #fff;
-  margin-bottom: 1rem;
+  color: #fff !important;
+  margin-bottom: 1rem !important;
   font-style: italic !important;
   font-weight: 400 !important;
   letter-spacing: 0.02em !important;
@@ -1080,9 +1090,10 @@ body, html {
   line-height: 1.4 !important;
 }
 
-.contact-quote p {
+/* Contact Quote Author - Higher specificity */
+.scene .scene-content .contact-quote p {
   font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  color: #aaa;
+  color: #aaa !important;
   font-weight: 400 !important;
   font-size: 0.9rem !important;
   font-style: italic !important;

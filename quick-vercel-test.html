@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Quick Vercel Test</title>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css?v=1.1.0">
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            padding: 2rem;
+            font-family: 'Albert Sans', sans-serif;
+        }
+        .test-box {
+            border: 2px solid #fff;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .result {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .pass { color: #51cf66; }
+        .fail { color: #ff6b6b; }
+    </style>
+</head>
+<body>
+    <h1>Quick Vercel Test - Contact Quote</h1>
+    
+    <div class="test-box">
+        <h2>Let's Connect</h2>
+        <div class="contact-quote">
+            <h3>"The best way to predict the future is to invent it."</h3>
+            <p>- Alan Kay</p>
+        </div>
+    </div>
+    
+    <div class="result">
+        <h3>Test Results:</h3>
+        <div id="results">Running tests...</div>
+    </div>
+    
+    <script>
+        function runQuickTest() {
+            const heading = document.querySelector('h2');
+            const quote = document.querySelector('.contact-quote h3');
+            const author = document.querySelector('.contact-quote p');
+            
+            const headingSize = parseFloat(getComputedStyle(heading).fontSize);
+            const quoteSize = parseFloat(getComputedStyle(quote).fontSize);
+            const authorSize = parseFloat(getComputedStyle(author).fontSize);
+            
+            const quoteFont = getComputedStyle(quote).fontFamily;
+            const quoteStyle = getComputedStyle(quote).fontStyle;
+            const quoteWeight = getComputedStyle(quote).fontWeight;
+            
+            // Test conditions
+            const tests = [
+                {
+                    name: "Quote smaller than heading",
+                    result: quoteSize < headingSize,
+                    details: `${quoteSize}px < ${headingSize}px`
+                },
+                {
+                    name: "Author smaller than quote", 
+                    result: authorSize < quoteSize,
+                    details: `${authorSize}px < ${quoteSize}px`
+                },
+                {
+                    name: "Quote font is readable",
+                    result: quoteFont.includes('Albert Sans') || quoteFont.includes('Arial'),
+                    details: quoteFont
+                },
+                {
+                    name: "Quote is italic",
+                    result: quoteStyle === 'italic',
+                    details: quoteStyle
+                },
+                {
+                    name: "Quote size is correct",
+                    result: Math.abs(quoteSize - 25.6) < 2,
+                    details: `${quoteSize}px (expected ~25.6px)`
+                }
+            ];
+            
+            let html = '';
+            let passCount = 0;
+            
+            tests.forEach(test => {
+                const status = test.result ? 'pass' : 'fail';
+                if (test.result) passCount++;
+                
+                html += `<div class="${status}">
+                    <strong>${test.name}:</strong> ${test.result ? 'PASS' : 'FAIL'}<br>
+                    <small>${test.details}</small>
+                </div>`;
+            });
+            
+            const overallResult = passCount === tests.length ? 'PASS' : 'FAIL';
+            const overallClass = passCount === tests.length ? 'pass' : 'fail';
+            
+            html = `<div class="${overallClass}"><strong>OVERALL: ${overallResult} (${passCount}/${tests.length})</strong></div><br>` + html;
+            
+            document.getElementById('results').innerHTML = html;
+            
+            console.log('Quick Test Results:', {
+                headingSize,
+                quoteSize,
+                authorSize,
+                quoteFont,
+                quoteStyle,
+                quoteWeight,
+                tests,
+                overallResult
+            });
+            
+            return passCount === tests.length;
+        }
+        
+        // Run test after page loads
+        setTimeout(runQuickTest, 100);
+        
+        // Run test every 2 seconds to simulate Vercel conditions
+        setInterval(runQuickTest, 2000);
+    </script>
+</body>
+</html> 
