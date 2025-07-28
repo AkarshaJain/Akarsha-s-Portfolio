@@ -1,35 +1,39 @@
-/* Critical Font Loading Fix for Vercel Consistency */
-@font-face {
-  font-family: 'Albert Sans';
-  font-display: swap;
+/* CRITICAL FIX: Force consistent font sizes across all environments */
+html {
+  font-size: 16px !important;
+  -webkit-text-size-adjust: 100% !important;
+  -ms-text-size-adjust: 100% !important;
+  text-size-adjust: 100% !important;
 }
 
-@font-face {
-  font-family: 'Syne';
-  font-display: swap;
+body {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
 }
 
-@font-face {
-  font-family: 'Great Vibes';
-  font-display: swap;
+/* Force specific font sizes for critical elements - keeping original fonts */
+.hero-title {
+  font-size: 4rem !important;
+  line-height: 0.9 !important;
 }
+
+.scene h2 {
+  font-size: 2.2rem !important;
+  line-height: 0.9 !important;
+}
+
+.about-greeting {
+  font-size: 2.2rem !important;
+  line-height: 1.2 !important;
+}
+
+/* Font Loading Optimization for Vercel */
 
 /* CSS Reset and Normalization */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-/* Font Normalization - Critical for Vercel consistency */
-html {
-  font-size: 16px;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  font-synthesis: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 html, body {
@@ -42,16 +46,11 @@ body, html {
   color: #fff;
   font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
   position: relative;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   /* overflow-y: hidden; */
-  text-rendering: optimizeLegibility;
-  -webkit-font-feature-settings: "kern" 1;
-  font-feature-settings: "kern" 1;
 }
 
 /* Main Container - Horizontal Scrolling like Bonhomme Paris */
