@@ -1,27 +1,57 @@
+/* Critical Font Loading Fix for Vercel Consistency */
+@font-face {
+  font-family: 'Albert Sans';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Syne';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  font-display: swap;
+}
+
 /* CSS Reset and Normalization */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
+/* Font Normalization - Critical for Vercel consistency */
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html, body {
   width: 100%;
   height: 100%;
-}
-html {
-  font-size: 16px;
 }
 
 body, html {
   background: #000;
   color: #fff;
-  font-family: 'Albert Sans', sans-serif;
+  font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   position: relative;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   /* overflow-y: hidden; */
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
 }
 
 /* Main Container - Horizontal Scrolling like Bonhomme Paris */
@@ -71,8 +101,8 @@ body, html {
 }
 
 .hero-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 3.5rem;
+  font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 4rem;
   font-weight: 800;
   line-height: 0.9;
   margin-bottom: 2rem;
@@ -84,6 +114,7 @@ body, html {
   text-transform: uppercase;
   max-width: 100vw;
   word-break: break-word;
+  font-display: swap;
 }
 
 .scene.active .hero-title {
@@ -92,7 +123,7 @@ body, html {
 }
 
 .hero-subtitle {
-  font-family: 'Albert Sans', sans-serif;
+  font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-size: 2rem;
   color: #fff;
   font-weight: 500;
@@ -102,6 +133,7 @@ body, html {
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  font-display: swap;
 }
 
 .scene.active .hero-subtitle {
@@ -110,7 +142,7 @@ body, html {
 }
 
 .hero-description {
-  font-family: 'Albert Sans', sans-serif;
+  font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
   font-size: 1.3rem;
   color: #ccc;
   margin-bottom: 3rem;
@@ -122,6 +154,7 @@ body, html {
   transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.9s;
   line-height: 1.6;
   font-weight: 400;
+  font-display: swap;
 }
 
 .scene.active .hero-description {
@@ -1125,8 +1158,8 @@ body, html {
 
 /* Section Titles */
 .scene h2 {
-  font-family: 'Syne', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 2.2rem;
   font-weight: 800;
   text-align: center;
   margin-bottom: 2rem;
@@ -1136,39 +1169,10 @@ body, html {
   line-height: 0.9;
   max-width: 100vw;
   word-break: break-word;
+  font-display: swap;
 }
 
-/* Override for About section calligraphy heading */
-.scene .about-text h2 {
-  font-family: 'Great Vibes', cursive !important;
-  font-size: 1.5rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.05em !important;
-  line-height: 1.2 !important;
-  text-transform: none !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
-  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  background-clip: text !important;
-  font-style: normal !important;
-}
 
-/* Ensure proper capitalization in calligraphy font */
-.scene .about-text h2::first-letter {
-  text-transform: uppercase !important;
-  font-size: 1.1em !important;
-}
-
-/* Make the A in Akarsha capital - matching the calligraphy image */
-.scene .about-text h2 .name-capital {
-  text-transform: uppercase !important;
-  font-size: 1.4em !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.02em !important;
-  display: inline-block !important;
-  margin-right: -0.05em !important;
-}
 
 .scene.active h2 {
   opacity: 1;
@@ -1237,6 +1241,41 @@ body, html {
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* About section greeting styling */
+.about-greeting {
+  font-family: 'Great Vibes', 'Brush Script MT', cursive !important;
+  font-size: 2.2rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1.2 !important;
+  text-transform: none !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-style: normal !important;
+  margin-bottom: 1.5rem !important;
+  color: #fff !important;
+  font-display: swap !important;
+}
+
+/* Ensure proper capitalization in calligraphy font */
+.about-greeting::first-letter {
+  text-transform: uppercase !important;
+  font-size: 1.1em !important;
+}
+
+/* Make the A in Akarsha capital - matching the calligraphy image */
+.about-greeting .name-capital {
+  text-transform: uppercase !important;
+  font-size: 1.4em !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.02em !important;
+  display: inline-block !important;
+  margin-right: -0.05em !important;
 }
 
 
