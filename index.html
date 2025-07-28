@@ -5,12 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Akarsha Jain - Software Engineer | ML & Cloud Enthusiast</title>
     <meta name="description" content="Akarsha Jain - Software Engineer and ML & Cloud Enthusiast. Currently pursuing MS in Computer Science at USC. Portfolio showcasing projects, experience, and skills.">
-    <link rel="stylesheet" href="styles.css?v=1.0.2">
-    <link rel="icon" type="image/x-icon" href="WIT.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Albert+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes:wght@400&family=Alex+Brush:wght@400&family=Allura:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="styles.css?v=1.0.5">
+    <link rel="icon" type="image/x-icon" href="image.png">
+    
+    <!-- Local Font Loading Script -->
+    <script>
+        // Force local font loading before rendering
+        if ('fonts' in document) {
+            Promise.all([
+                document.fonts.load('400 16px "Albert Sans"'),
+                document.fonts.load('800 64px "Syne"'),
+                document.fonts.load('800 35px "Syne"'),
+                document.fonts.load('400 35px "Great Vibes"')
+            ]).then(() => {
+                document.documentElement.classList.add('fonts-loaded');
+                console.log('Local fonts loaded successfully');
+            }).catch((error) => {
+                console.error('Font loading error:', error);
+                // Fallback: show content anyway
+                document.documentElement.classList.add('fonts-loaded');
+            });
+        } else {
+            // Fallback for browsers without font loading API
+            document.documentElement.classList.add('fonts-loaded');
+        }
+    </script>
 </head>
 <body>
     <!-- Progress Bar -->
@@ -71,7 +91,7 @@
                         <div class="education-card">
                             <div class="education-header">
                                 <div class="education-logo">
-                                    <div class="logo-placeholder">USC</div>
+                                    <img src="logo.jpg" alt="USC Logo" style="width: 100%; height: 100%; object-fit: contain;">
                                 </div>
                                 <div class="education-info">
                                     <h3>Master of Science in Computer Science</h3>
@@ -113,7 +133,7 @@
                         <div class="education-card">
                             <div class="education-header">
                                 <div class="education-logo">
-                                    <div class="logo-placeholder">WIT</div>
+                                    <img src="WIT.png" alt="WIT Logo" style="width: 100%; height: 100%; object-fit: contain;">
                                 </div>
                                 <div class="education-info">
                                     <h3>Bachelor of Engineering in Computer Science</h3>

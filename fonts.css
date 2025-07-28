@@ -1,0 +1,25 @@
+/* Local Font Declarations - Replace Google Fonts for consistent rendering */
+
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('./fonts/AlbertSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 800;
+  font-display: block;
+  src: url('./fonts/Syne-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url('./fonts/GreatVibes-Regular.ttf') format('truetype');
+} 
