@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', function() {
     updateScene(0);
     updateProgressBar();
     
+    // Force initial scene to be visible
+    setTimeout(() => {
+        scenes[0].classList.add('active');
+        updateProgressBar();
+    }, 100);
+    
     // Update scene visibility
     function updateScene(sceneIndex) {
         scenes.forEach((scene, index) => {
@@ -39,12 +45,16 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             scrollIndicator.classList.remove('show');
         }
+        
+        // Force reflow to ensure proper rendering
+        mainContainer.offsetHeight;
     }
     
     // Update progress bar
     function updateProgressBar() {
         const progress = (currentScene / (scenes.length - 1)) * 100;
         progressBar.style.width = `${progress}%`;
+        console.log('Progress:', progress + '%');
     }
     
     // Go to specific scene
@@ -90,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Check if scrolling within projects or experience containers
         const projectsContainer = document.querySelector('.projects-container');
         const timelineContainer = document.querySelector('.timeline-container');
+        const educationContainer = document.querySelector('.education-container');
         
         // If scrolling within these containers, allow normal scrolling
         if (projectsContainer && projectsContainer.contains(e.target)) {
@@ -98,6 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (timelineContainer && timelineContainer.contains(e.target)) {
             return; // Allow normal scrolling within timeline container
+        }
+        
+        if (educationContainer && educationContainer.contains(e.target)) {
+            return; // Allow normal scrolling within education container
         }
         
         // If scrolling on the main page, handle horizontal navigation
@@ -169,6 +184,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add loading animation
     setTimeout(() => {
         document.body.classList.add('loaded');
+        // Ensure proper initial positioning
+        mainContainer.style.transform = 'translateX(0)';
+        updateScene(0);
+        updateProgressBar();
     }, 500);
     
     // Tabbed Navigation for Projects and Experience
@@ -296,6 +315,7 @@ style.textContent = `
     /* Prevent vertical scrolling */
     html, body {
         overflow-y: hidden;
+        overflow-x: hidden;
     }
     
     /* Smooth horizontal transitions */

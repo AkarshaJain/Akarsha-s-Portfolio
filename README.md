@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Akarsha Jain - 3D Portfolio
 
 A beautiful, responsive 3D portfolio website with a soft, formal color scheme designed for female professionals. Features moving 3D boxes in the background and a vertical navigation system.
@@ -177,3 +178,6 @@ This portfolio template is free to use and modify for personal and commercial pr
 ---
 
 **Enjoy your beautiful 3D portfolio!** 🎉 
+=======
+# Akarsha-s-Portfolio
+>>>>>>> c4ecb77f11860f9775613b00f3f815be5395a767
