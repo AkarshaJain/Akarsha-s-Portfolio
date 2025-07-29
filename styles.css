@@ -1705,4 +1705,21 @@ section#contact .scene-content .contact-quote p,
   }
 }
 
+@media (max-width: 768px) {
+  #about, #skills {
+    height: 100vh !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .about-grid, .skills-grid {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    max-height: 100%;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 
