@@ -20,23 +20,23 @@ body {
 }
 
 .hero-title {
-  font-size: 6rem !important;
+  font-size: 7rem !important;
 }
 
 .scene h2 {
-  font-size: 4rem !important;
+  font-size: 5rem !important;
 }
 
 .about-greeting {
-  font-size: 3.5rem !important;
+  font-size: 4rem !important;
 }
 
 p {
-  font-size: 1.6rem !important;
+  font-size: 2rem !important;
 }
 
 h3, h4 {
-  font-size: 2.2rem !important;
+  font-size: 2.8rem !important;
 }
 
 /* Local fonts ensure consistent rendering across all environments */
@@ -286,7 +286,7 @@ body, html {
 
 .about-text p {
   font-family: 'Inter', sans-serif;
-  font-size: 1.1rem;
+  font-size: 2.2rem !important;
   line-height: 1.8;
   color: #aaa;
   margin-bottom: 1.5rem;
@@ -1625,6 +1625,66 @@ section#contact .scene-content .contact-quote p,
   letter-spacing: 0.02em !important;
   display: inline-block !important;
   margin-right: -0.05em !important;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center !important;
+  }
+  .profile-section, .about-text {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    padding: 0 1rem !important;
+  }
+  .about-greeting {
+    font-size: 2.2rem !important;
+  }
+  .about-text p {
+    font-size: 1.2rem !important;
+  }
+  .skills-grid {
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center !important;
+  }
+  .skill-category {
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .skill-tag {
+    font-size: 1.1rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  .skills-container {
+    padding: 0 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-greeting {
+    font-size: 1.5rem !important;
+  }
+  .about-text p {
+    font-size: 1rem !important;
+  }
+  .scene h2 {
+    font-size: 2.2rem !important;
+  }
+  .hero-title {
+    font-size: 3.2rem !important;
+  }
+  .skills-grid {
+    gap: 1rem !important;
+  }
+  .skill-tag {
+    font-size: 1rem !important;
+    padding: 0.3rem 0.6rem !important;
+  }
 }
 
 
