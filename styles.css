@@ -1,6 +1,6 @@
 /* CRITICAL FIX: Force consistent font rendering across all environments */
 html {
-  font-size: 14px !important;
+  font-size: 12px !important;
   -webkit-text-size-adjust: 100% !important;
   -ms-text-size-adjust: 100% !important;
   text-size-adjust: 100% !important;
