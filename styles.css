@@ -1077,8 +1077,10 @@ body, html {
   margin-bottom: 3rem;
 }
 
-/* Contact Quote - Higher specificity to override any conflicting styles */
-.scene .scene-content .contact-quote h3 {
+/* Contact Quote - Maximum specificity to override Vercel caching issues */
+.scene .scene-content .contact-quote h3,
+#contact .scene-content .contact-quote h3,
+section#contact .scene-content .contact-quote h3 {
   font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   font-size: 1.6rem !important;
   color: #fff !important;
@@ -1090,14 +1092,78 @@ body, html {
   line-height: 1.4 !important;
 }
 
-/* Contact Quote Author - Higher specificity */
-.scene .scene-content .contact-quote p {
+/* Contact Quote Author - Maximum specificity */
+.scene .scene-content .contact-quote p,
+#contact .scene-content .contact-quote p,
+section#contact .scene-content .contact-quote p {
   font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
   color: #aaa !important;
   font-weight: 400 !important;
   font-size: 0.9rem !important;
   font-style: italic !important;
   margin-top: 0.5rem !important;
+}
+
+/* Force override for Vercel deployment - Base styles without font-size */
+.contact-quote h3 {
+  font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #fff !important;
+}
+
+.contact-quote p {
+  font-family: 'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: #aaa !important;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 768px) {
+  .contact-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-dot {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .project-tab,
+  .experience-tab {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .skill-tag {
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Prevent horizontal scroll on mobile */
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+  
+  .main-container {
+    width: 100vw;
+  }
+  
+  .scene {
+    width: 100vw;
+    min-width: 100vw;
+  }
 }
 
 .contact-info p {
@@ -1218,6 +1284,21 @@ body, html {
 }
 
 /* Responsive Design */
+/* Default desktop styles */
+.scene .scene-content .contact-quote h3,
+#contact .scene-content .contact-quote h3,
+section#contact .scene-content .contact-quote h3,
+.contact-quote h3 {
+  font-size: 1.6rem !important;
+}
+
+.scene .scene-content .contact-quote p,
+#contact .scene-content .contact-quote p,
+section#contact .scene-content .contact-quote p,
+.contact-quote p {
+  font-size: 0.9rem !important;
+}
+
 @media (max-width: 1200px) {
   .scene-content {
     padding: 0 2rem;
@@ -1232,15 +1313,50 @@ body, html {
   .about-greeting {
     font-size: 1.5rem !important;
   }
+  
+  /* Contact quote responsive */
+  .scene .scene-content .contact-quote h3,
+  #contact .scene-content .contact-quote h3,
+  section#contact .scene-content .contact-quote h3,
+  .contact-quote h3 {
+    font-size: 1.4rem !important;
+  }
+  .scene .scene-content .contact-quote p,
+  #contact .scene-content .contact-quote p,
+  section#contact .scene-content .contact-quote p,
+  .contact-quote p {
+    font-size: 0.8rem !important;
+  }
+  
+  /* Education responsive */
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  /* Skills responsive */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .scene-content {
+    padding: 0 1rem;
+  }
+  
   .hero-title {
     font-size: 2rem !important;
   }
   
   .hero-subtitle {
     font-size: 1rem;
+  }
+  
+  .hero-description {
+    font-size: 1rem;
+    max-width: 100%;
   }
   
   .about-grid {
@@ -1250,7 +1366,7 @@ body, html {
   
   .profile-image {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
   }
   
@@ -1270,9 +1386,193 @@ body, html {
     font-size: 1.2rem !important;
   }
   
+  /* Contact quote mobile */
+  .scene .scene-content .contact-quote h3,
+  #contact .scene-content .contact-quote h3,
+  section#contact .scene-content .contact-quote h3,
+  .contact-quote h3 {
+    font-size: 1.2rem !important;
+  }
+  .scene .scene-content .contact-quote p,
+  #contact .scene-content .contact-quote p,
+  section#contact .scene-content .contact-quote p,
+  .contact-quote p {
+    font-size: 0.7rem !important;
+  }
+  
   .contact-links {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+  }
+  
+  .contact-link {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+  
+  /* Education mobile */
+  .education-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .education-logo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  /* Navigation mobile */
+  .nav-dots {
+    bottom: 10px;
+    gap: 15px;
+  }
+  
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* Timeline mobile */
+  .timeline-container {
+    padding: 0 1rem;
+  }
+  
+  .timeline-item {
+    margin-bottom: 2rem;
+  }
+  
+  .timeline-content {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scene-content {
+    padding: 0 0.5rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .hero-description {
+    font-size: 0.9rem;
+  }
+  
+  .scene h2 {
+    font-size: 1rem !important;
+  }
+  
+  .about-greeting {
+    font-size: 1rem !important;
+  }
+  
+  /* Contact quote small mobile */
+  .scene .scene-content .contact-quote h3,
+  #contact .scene-content .contact-quote h3,
+  section#contact .scene-content .contact-quote h3,
+  .contact-quote h3 {
+    font-size: 1rem !important;
+  }
+  .scene .scene-content .contact-quote p,
+  #contact .scene-content .contact-quote p,
+  section#contact .scene-content .contact-quote p,
+  .contact-quote p {
+    font-size: 0.6rem !important;
+  }
+  
+  .contact-info p {
+    font-size: 1rem;
+  }
+  
+  /* Education small mobile */
+  .education-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .education-info h4 {
+    font-size: 1rem;
+  }
+  
+  /* Skills small mobile */
+  .skill-category h3 {
+    font-size: 1.1rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+  }
+  
+  /* Navigation small mobile */
+  .nav-dots {
+    bottom: 5px;
+    gap: 10px;
+  }
+  
+  .nav-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* Tablet landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .scene-content {
+    padding: 0 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem !important;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .education-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1400px) {
+  .scene-content {
+    padding: 0 6rem;
+  }
+  
+  .hero-title {
+    font-size: 5rem !important;
+  }
+  
+  .scene h2 {
+    font-size: 2.5rem !important;
+  }
+  
+  .about-greeting {
+    font-size: 2.5rem !important;
+  }
+  
+  .scene .scene-content .contact-quote h3,
+  #contact .scene-content .contact-quote h3,
+  section#contact .scene-content .contact-quote h3,
+  .contact-quote h3 {
+    font-size: 2rem !important;
+  }
+  
+  .scene .scene-content .contact-quote p,
+  #contact .scene-content .contact-quote p,
+  section#contact .scene-content .contact-quote p,
+  .contact-quote p {
+    font-size: 1.1rem !important;
   }
 }
 
