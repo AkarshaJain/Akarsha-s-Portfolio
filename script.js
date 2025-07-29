@@ -1,6 +1,23 @@
-// Bonhomme Paris Style Horizontal Scrolling Portfolio
+// Enhanced Portfolio with Improved Font Loading for GitHub Pages
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Portfolio initializing...');
+    
+    // Enhanced font loading check
+    function checkFontsLoaded() {
+        if ('fonts' in document) {
+            return document.fonts.ready.then(() => {
+                console.log('Fonts ready');
+                document.documentElement.classList.add('fonts-ready');
+                return true;
+            });
+        } else {
+            // Fallback for older browsers
+            setTimeout(() => {
+                document.documentElement.classList.add('fonts-ready');
+            }, 1000);
+            return Promise.resolve(true);
+        }
+    }
     
     // Get DOM elements
     const scenes = document.querySelectorAll('.scene');
@@ -13,15 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let isScrolling = false;
     let scrollTimeout;
     
-    // Initialize
-    updateScene(0);
-    updateProgressBar();
-    
-    // Force initial scene to be visible
-    setTimeout(() => {
-        scenes[0].classList.add('active');
+    // Initialize after fonts are loaded
+    checkFontsLoaded().then(() => {
+        updateScene(0);
         updateProgressBar();
-    }, 100);
+        
+        // Force initial scene to be visible
+        setTimeout(() => {
+            scenes[0].classList.add('active');
+            updateProgressBar();
+        }, 100);
+    });
     
     // Update scene visibility
     function updateScene(sceneIndex) {
@@ -181,14 +200,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, { passive: true });
     
-    // Add loading animation
-    setTimeout(() => {
-        document.body.classList.add('loaded');
-        // Ensure proper initial positioning
-        mainContainer.style.transform = 'translateX(0)';
-        updateScene(0);
-        updateProgressBar();
-    }, 500);
+    // Add loading animation with font loading consideration
+    checkFontsLoaded().then(() => {
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+            // Ensure proper initial positioning
+            mainContainer.style.transform = 'translateX(0)';
+            updateScene(0);
+            updateProgressBar();
+        }, 500);
+    });
     
     // Tabbed Navigation for Projects and Experience
     initializeTabbedNavigation();
@@ -243,7 +264,7 @@ function initializeTabbedNavigation() {
     });
 }
 
-// Add CSS for Bonhomme Paris style animations
+// Add CSS for Bonhomme Paris style animations with font loading considerations
 const style = document.createElement('style');
 style.textContent = `
     body {
@@ -321,6 +342,16 @@ style.textContent = `
     /* Smooth horizontal transitions */
     .main-container {
         will-change: transform;
+    }
+    
+    /* Font loading states */
+    .fonts-loading {
+        opacity: 0;
+    }
+    
+    .fonts-loaded {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
     }
 `;
 document.head.appendChild(style);

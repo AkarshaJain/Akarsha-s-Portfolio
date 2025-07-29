@@ -11,6 +11,31 @@ html {
   -webkit-zoom: 1 !important;
 }
 
+/* Enhanced font loading with better fallbacks */
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/AlbertSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Syne';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('./fonts/Syne-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Great Vibes';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('./fonts/GreatVibes-Regular.ttf') format('truetype');
+}
+
 /* Local fonts are loaded immediately - no need for visibility control */
 
 body {
@@ -48,7 +73,7 @@ h3, h4 {
   font-size: 1.8rem !important; /* 21.6px */
 }
 
-/* Font Loading Optimization for Vercel */
+/* Font Loading Optimization for GitHub Pages */
 
 /* CSS Reset and Normalization */
 *, *::before, *::after {
@@ -86,6 +111,17 @@ body, html {
   min-width: 100vw;
   max-width: 100vw;
   max-height: 100vh;
+}
+
+/* Ensure content is visible during font loading */
+.fonts-loading {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fonts-loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
 /* Main Container - Horizontal Scrolling like Bonhomme Paris */
