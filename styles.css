@@ -1696,4 +1696,13 @@ section#contact .scene-content .contact-quote p,
   }
 }
 
+@media (max-width: 768px) {
+  .about-grid,
+  .skills-grid {
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 
